@@ -1,0 +1,70 @@
+<div fxLayout="column" fxLayoutAlign="space-between center">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Convert Units</mat-card-title>
+      <mat-card-subtitle></mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div [formGroup]="unitForm">
+        <div fxLayout="row" fxLayoutAlign="start start">
+          <mat-form-field>
+            <mat-label>Unit Type</mat-label>
+            <mat-select placeholder="Select Type" [formControl]="unitTypeCtrl">
+              <mat-option *ngFor="let item of unitTypes" [value]="item.value">
+                {{item.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-between start">
+          <div>
+            <mat-form-field>
+              <mat-label>Input Numerical Value</mat-label>
+              <input matInput placeholder="Input Value" formControlName="inputValue">
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field>
+              <mat-label>Input Unit of Measure</mat-label>
+              <mat-select placeholder="Input Unit" formControlName="inputUnit">
+                <mat-option *ngFor="let item of units" [value]="item">
+                  {{item}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field>
+              <mat-label>Target Unit of Measure</mat-label>
+              <mat-select placeholder="Target Unit" formControlName="targetUnit">
+                <mat-option *ngFor="let item of units" [value]="item">
+                  {{item}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start start">
+          <div>
+            <mat-form-field>
+              <mat-label>Student Response</mat-label>
+              <input matInput placeholder="Target Value" formControlName="targetValue">
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field>
+              <mat-label>Expected Target Value</mat-label>
+              <input matInput placeholder="Target Value" [formControl]="expectedTargetValueCtrl">
+            </mat-form-field>
+          </div>
+          <div>
+            <p>{{outputMessage}}</p>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <!-- <button mat-button [disabled]="unitForm.invalid">Ok</button> -->
+    </mat-card-actions>
+  </mat-card>
+</div>
